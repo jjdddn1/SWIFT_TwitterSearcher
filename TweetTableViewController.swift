@@ -33,7 +33,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func refresh(sender: UIRefreshControl) {
-        
+        sender.beginRefreshing()
         if(searchText != nil){
             if let request = nextRequestToAttemt{
                 request.fetchTweets { (resultTweet) -> Void in
@@ -78,7 +78,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        refresh()
+        refresh(self.refreshControl!)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
